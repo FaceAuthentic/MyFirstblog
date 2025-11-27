@@ -6,7 +6,11 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll; /* 修改为scroll，修复背景固定导致无法滚动的问题 */
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
 }
 
 /* 首页专用样式 */
@@ -14,18 +18,56 @@ body {
   text-align: center;
   padding: 60px 0;
   margin-bottom: 60px;
-  background-color: rgba(255, 255, 255, 0.85);
+  /* 移除背景色，实现透明效果 */
   border-radius: var(--border-radius);
   margin: 20px auto;
   max-width: 90%;
 }
 
 .welcome-description {
-  font-size: 1.3rem;
-  color: var(--text-light);
+  font-size: 1.2rem;
+  color: #555;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.8;
+}
+
+/* 自我介绍区域样式 */
+.self-introduction {
+  background-color: rgba(0, 0, 0, 0); /* 完全透明背景 */
+  border-radius: 0; /* 移除圆角 */
+  padding: 30px;
+  margin: -15px auto; /* 向上移动45px (30px - 45px = -15px) */
+  max-width: 800px;
+  box-shadow: none; /* 移除阴影 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 添加彩虹色渐变标题样式 */
+.self-introduction h2 {
+  font-size: 6rem; /* 从4.84rem修改为6rem */
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  font-weight: bold;
+}
+
+.self-introduction p {
+  font-size: 1rem; /* 从1.2rem修改为1rem */
+  line-height: 1.8;
+  color: #ffffff; /* 白色文字，确保在深色背景上可读 */
+  text-align: justify; /* 设置为两端对齐 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* 添加文字阴影，进一步提高可读性 */
+  font-family: 'PingFang SC', 'Microsoft YaHei', '微软雅黑', sans-serif;
+  text-indent: 2em;
+  width: 100%;
+  max-width: 700px;
 }
 
 /* 团队成员样式 */
@@ -33,8 +75,14 @@ body {
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin: 40px 0;
+  margin: -5px 0; /* 向上移动45px (40px - 45px = -5px) */
   flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0); /* 完全透明背景 */
+  border-radius: 0; /* 移除圆角 */
+  padding: 30px;
+  max-width: 800px;
+  margin: -5px auto; /* 向上移动45px (40px - 45px = -5px) */
+  box-shadow: none; /* 移除阴影 */
 }
 
 .member {
@@ -67,17 +115,19 @@ body {
   margin-top: 15px;
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: #ffffff; /* 白色文字，确保在深色背景上可读 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* 添加文字阴影，进一步提高可读性 */
 }
 
 /* 模块区域 */
 .modules-section {
   margin-bottom: 60px;
-  background-color: rgba(255, 255, 255, 0.85);
+  /* 移除背景色，实现透明效果 */
   border-radius: var(--border-radius);
   margin: 20px auto;
   max-width: 90%;
   padding: 60px 0;
+  background-color: rgba(0, 0, 0, 0.6); /* 添加半透明黑色背景，提高内容可读性 */
 }
 
 .section-title {

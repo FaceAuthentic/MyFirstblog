@@ -128,51 +128,116 @@ function throttle(func, limit) {
 
 /**
  * 显示加载指示器
+ * @param {string} message - 加载提示信息，默认为'加载中...'
+ * @returns {HTMLElement} 加载指示器元素
  */
-function showLoadingIndicator() {
-  const indicator = document.createElement('div');
-  indicator.className = 'loading-indicator';
-  indicator.innerHTML = '<div class="loading-spinner"></div>';
-  document.body.appendChild(indicator);
+function showLoadingIndicator(message = '加载中...') {
+  // 检查是否已存在加载指示器
+  let loadingIndicator = document.querySelector('.loading-indicator');
+  
+  // 如果不存在，则创建一个新的
+  if (!loadingIndicator) {
+    // 创建加载指示器容器
+    loadingIndicator = createElement('div', {
+      className: 'loading-indicator',
+      style: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: '9999'
+      }
+    });
+    
+    // 创建加载内容容器
+    const loadingContent = createElement('div', {
+      className: 'loading-content',
+      style: {
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        padding: '20px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+        textAlign: 'center',
+        maxWidth: '80%',
+        animation: 'fadeIn 0.3s ease'
+      }
+    });
+    
+    // 创建加载动画
+    const loadingSpinner = createElement('div', {
+      className: 'loading-spinner',
+      style: {
+        width: '40px',
+        height: '40px',
+        border: '4px solid #f3f3f3',
+        borderTop: '4px solid var(--primary-color, #007bff)',
+        borderRadius: '50%',
+        margin: '0 auto 15px',
+        animation: 'spin 1s linear infinite'
+      }
+    });
+    
+    // 创建加载文本
+    const loadingText = createElement('p', {
+      className: 'loading-text',
+      style: {
+        margin: '0',
+        color: '#333',
+        fontSize: '16px'
+      }
+    }, message);
+    
+    // 组装元素
+    loadingContent.appendChild(loadingSpinner);
+    loadingContent.appendChild(loadingText);
+    loadingIndicator.appendChild(loadingContent);
+    
+    // 添加到页面
+    document.body.appendChild(loadingIndicator);
+  } else {
+    // 如果已存在，只更新消息文本
+    const loadingText = loadingIndicator.querySelector('.loading-text');
+    if (loadingText) {
+      loadingText.textContent = message;
+    }
+  }
+  
+  return loadingIndicator;
 }
 
 /**
  * 隐藏加载指示器
  */
 function hideLoadingIndicator() {
-  const indicator = document.querySelector('.loading-indicator');
-  if (indicator) {
-    indicator.remove();
+  const loadingIndicator = document.querySelector('.loading-indicator');
+  
+  if (loadingIndicator) {
+    // 添加淡出动画
+    loadingIndicator.style.animation = 'fadeOut 0.3s ease';
+    
+    // 动画结束后移除元素
+    setTimeout(() => {
+      if (loadingIndicator.parentNode) {
+        loadingIndicator.parentNode.removeChild(loadingIndicator);
+      }
+    }, 300);
   }
 }
 
 /**
- * 显示提示消息
+ * 显示提示消息（已禁用）
  * @param {string} message - 消息内容
  * @param {string} type - 消息类型: 'success', 'error', 'info'
  * @param {number} duration - 显示时长(毫秒)，默认为3000
  */
 function showMessage(message, type = 'info', duration = 3000) {
-  const messageElement = document.createElement('div');
-  messageElement.className = `message message-${type}`;
-  messageElement.textContent = message;
-  
-  document.body.appendChild(messageElement);
-  
-  // 添加显示动画
-  setTimeout(() => {
-    messageElement.classList.add('show');
-  }, 10);
-  
-  // 设置自动隐藏
-  setTimeout(() => {
-    messageElement.classList.remove('show');
-    setTimeout(() => {
-      if (messageElement.parentNode) {
-        messageElement.parentNode.removeChild(messageElement);
-      }
-    }, 300);
-  }, duration);
+  // 禁用提示消息，不再创建悬浮元素
+  console.log(`${type}: ${message}`);
 }
 
 /**

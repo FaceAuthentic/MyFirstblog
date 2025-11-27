@@ -54,7 +54,7 @@ body {
 .home-link {
   display: block;
   text-align: center;
-  padding: 20px 0;
+  padding: 5px 0; /* 调整为5px，使导航栏总高度为30px */
   font-size: 2rem;
   font-weight: 700;
   color: var(--primary-color);
@@ -68,7 +68,7 @@ body {
 
 /* 导航栏 */
 .main-nav {
-  padding: 15px 0;
+  padding: 5px 0; /* 调整为5px，使导航栏总高度为30px */
 }
 
 .nav-list {
@@ -85,7 +85,7 @@ body {
 
 .nav-link {
   display: block;
-  padding: 15px 20px;
+  padding: 5px 20px; /* 调整上下内边距为5px，使导航栏总高度为30px */
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
@@ -262,6 +262,24 @@ main {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
