@@ -1,0 +1,249 @@
+/* 个人信息页面样式 */
+
+/* 个人信息容器 */
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 个人信息卡片 */
+.profile-card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 个人头像区域 */
+.profile-avatar {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 40px 0;
+  text-align: center;
+}
+
+.avatar-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* 个人信息内容区域 */
+.profile-info {
+  padding: 30px;
+}
+
+.profile-name {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.profile-title {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 详细信息 */
+.profile-details {
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  width: 80px;
+  color: var(--text-color);
+}
+
+.detail-value {
+  flex: 1;
+  color: var(--text-light);
+}
+
+/* 个人简介 */
+.profile-bio {
+  margin-bottom: 30px;
+}
+
+.profile-bio h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.profile-bio h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.profile-bio p {
+  line-height: 1.8;
+  color: var(--text-light);
+}
+
+/* 技能标签 */
+.profile-skills {
+  margin-bottom: 30px;
+}
+
+.profile-skills h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.profile-skills h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background-color: rgba(52, 152, 219, 0.1);
+  color: var(--primary-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* 社交媒体链接 */
+.profile-social {
+  margin-bottom: 20px;
+}
+
+.profile-social h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.profile-social h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--background-color);
+  color: var(--text-light);
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .profile-card {
+    margin: 0 15px;
+  }
+  
+  .profile-info {
+    padding: 20px;
+  }
+  
+  .profile-name {
+    font-size: 1.8rem;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+  }
+  
+  .detail-label {
+    width: auto;
+    margin-bottom: 5px;
+  }
+  
+  .skill-tags {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.profile-avatar {
+  animation: fadeInUp 0.6s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.profile-info {
+  animation: fadeInUp 0.6s ease 0.4s forwards;
+  opacity: 0;
+}

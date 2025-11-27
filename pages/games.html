@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏记录 - 个人博客</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/games.css">
+</head>
+<body>
+    <!-- 导航栏将由nav.js动态创建 -->
+    <header class="site-header"></header>
+
+    <!-- 主内容区域 -->
+    <main class="main">
+        <div class="container">
+            <section class="page-header">
+                <h1 class="page-title">游戏记录</h1>
+                <p class="page-description">记录玩过的游戏和时长</p>
+            </section>
+
+            <!-- 操作区域 -->
+            <section class="actions">
+                <button id="add-game-btn" class="btn btn-primary">
+                    <i class="icon-plus"></i> 添加游戏
+                </button>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="搜索游戏名称..." class="form-control">
+                </div>
+            </section>
+
+            <!-- 游戏列表 -->
+            <section class="games-container" id="games-container">
+                <!-- 游戏卡片将由JavaScript动态生成 -->
+            </section>
+
+            <!-- 空状态提示 -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <div class="empty-icon">
+                    <i class="icon-game"></i>
+                </div>
+                <h3>还没有添加任何游戏</h3>
+                <p>点击上方"添加游戏"按钮，开始记录你的游戏之旅</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 添加/编辑游戏模态框 -->
+    <div class="modal" id="game-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">添加游戏</h2>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="game-form">
+                    <input type="hidden" id="game-id">
+                    
+                    <div class="form-group">
+                        <label for="game-name">游戏名称 *</label>
+                        <input type="text" id="game-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-type">游戏类型 *</label>
+                        <select id="game-type" class="form-control" required>
+                            <option value="">请选择游戏类型</option>
+                            <option value="MOBA">MOBA</option>
+                            <option value="养成">养成</option>
+                            <option value="运营">运营</option>
+                            <option value="FPS">FPS</option>
+                            <option value="策略">策略</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-category">游戏分类 *</label>
+                        <select id="game-category" class="form-control" required>
+                            <option value="">请选择游戏分类</option>
+                            <option value="端游">端游</option>
+                            <option value="手游">手游</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="game-start-date">开始游玩日期 *</label>
+                        <input type="date" id="game-start-date" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel-btn" class="btn btn-secondary">取消</button>
+                <button type="button" id="save-btn" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载指示器 -->
+    <div class="loading" id="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- 消息提示 -->
+    <div class="toast" id="toast" style="display: none;">
+        <div class="toast-message" id="toast-message"></div>
+    </div>
+
+    <!-- JavaScript文件 -->
+    <script src="../js/state.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/games.js"></script>
+</body>
+</html>

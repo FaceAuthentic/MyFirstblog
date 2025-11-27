@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试页面 - 我的个人博客</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- 引入第三方库 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pell@1.0.6/dist/pell.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <!-- 导航栏将由nav.js动态创建 -->
+  </header>
+  
+  <main class="container page-transition">
+    <h1 class="page-title">测试页面</h1>
+    
+    <div class="card">
+      <h2>导航测试</h2>
+      <p>这个页面用于测试导航功能是否正常工作。</p>
+      <p>请检查以下几点：</p>
+      <ul>
+        <li>导航栏是否正确显示</li>
+        <li>当前页面是否高亮显示</li>
+        <li>点击导航链接是否能正确跳转</li>
+        <li>页面切换是否有淡入淡出效果</li>
+      </ul>
+      
+      <div class="form-group">
+        <button id="test-message" class="btn">测试消息提示</button>
+        <button id="test-loading" class="btn btn-secondary">测试加载指示器</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>数据存储测试</h2>
+      <p>测试数据存储和读取功能：</p>
+      
+      <div class="form-group">
+        <label for="test-input" class="form-label">测试数据</label>
+        <input type="text" id="test-input" class="form-control" placeholder="输入一些测试数据">
+      </div>
+      
+      <div class="form-group">
+        <button id="save-data" class="btn">保存数据</button>
+        <button id="load-data" class="btn btn-secondary">加载数据</button>
+        <button id="clear-data" class="btn btn-danger">清除数据</button>
+      </div>
+      
+      <div id="data-display" class="card" style="margin-top: 20px; display: none;">
+        <h3>已保存的数据：</h3>
+        <p id="saved-data"></p>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2023 我的个人博客. 保留所有权利.</p>
+    </div>
+  </footer>
+  
+  <!-- 引入JavaScript库 -->
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pell@1.0.6/dist/pell.min.js"></script>
+  
+  <!-- 引入自定义脚本 -->
+  <script src="js/state.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/nav.js"></script>
+  
+  <script>
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化导航
+      const navigation = new Navigation();
+      
+      // 测试消息提示
+      document.getElementById('test-message').addEventListener('click', function() {
+        utils.showMessage('这是一个测试消息', 'info');
+      });
+      
+      // 测试加载指示器
+      document.getElementById('test-loading').addEventListener('click', function() {
+        utils.showLoadingIndicator();
+        
+        // 3秒后隐藏加载指示器
+        setTimeout(function() {
+          utils.hideLoadingIndicator();
+        }, 3000);
+      });
+      
+      // 测试数据存储
+      document.getElementById('save-data').addEventListener('click', function() {
+        const testData = document.getElementById('test-input').value;
+        if (!testData) {
+          utils.showMessage('请输入测试数据', 'error');
+          return;
+        }
+        
+        appState.saveData('testData', testData);
+        utils.showMessage('数据已保存', 'success');
+      });
+      
+      document.getElementById('load-data').addEventListener('click', function() {
+        const testData = appState.loadData('testData');
+        if (testData) {
+          document.getElementById('test-input').value = testData;
+          document.getElementById('saved-data').textContent = testData;
+          document.getElementById('data-display').style.display = 'block';
+          utils.showMessage('数据已加载', 'success');
+        } else {
+          utils.showMessage('没有找到保存的数据', 'error');
+        }
+      });
+      
+      document.getElementById('clear-data').addEventListener('click', function() {
+        appState.removeData('testData');
+        document.getElementById('test-input').value = '';
+        document.getElementById('data-display').style.display = 'none';
+        utils.showMessage('数据已清除', 'success');
+      });
+    });
+  </script>
+</body>
+</html>

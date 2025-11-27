@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人博客</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+  <!-- 引入第三方库 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pell@1.0.6/dist/pell.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <!-- 导航栏将由nav.js动态创建 -->
+  </header>
+  
+  <main class="container page-transition">
+    <section class="welcome-section">
+      <h1 class="page-title">欢迎来到我的个人博客</h1>
+      
+      <!-- 成员头像区域 -->
+      <div class="team-members">
+        <div class="member">
+          <img src="assets/images/1.jpg" alt="成员1" class="member-avatar">
+          <h3 class="member-name">成员1</h3>
+        </div>
+        <div class="member">
+          <img src="assets/images/2.jpg" alt="成员2" class="member-avatar">
+          <h3 class="member-name">成员2</h3>
+        </div>
+      </div>
+      
+      <p class="welcome-description">这里记录着我的生活、学习和思考，欢迎浏览！</p>
+    </section>
+    
+    <section class="modules-section">
+      <h2 class="section-title">探索我的世界</h2>
+      <div class="modules-grid">
+        <div class="module-card" data-module="profile">
+          <div class="module-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3 class="module-title">个人信息</h3>
+          <p class="module-description">了解我的基本信息和背景</p>
+          <a href="pages/profile.html" class="btn btn-primary">查看详情</a>
+        </div>
+        
+        <div class="module-card" data-module="books">
+          <div class="module-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <h3 class="module-title">读书</h3>
+          <p class="module-description">分享我读过的书籍和感想</p>
+          <a href="pages/books.html" class="btn btn-primary">查看详情</a>
+        </div>
+        
+        <div class="module-card" data-module="games">
+          <div class="module-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+              <path d="M6 12h4"></path>
+              <path d="M14 12h4"></path>
+            </svg>
+          </div>
+          <h3 class="module-title">游戏</h3>
+          <p class="module-description">记录我玩过的游戏和体验</p>
+          <a href="pages/games.html" class="btn btn-primary">查看详情</a>
+        </div>
+        
+        <div class="module-card" data-module="notes">
+          <div class="module-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="module-title">笔记</h3>
+          <p class="module-description">记录我的思考和感悟</p>
+          <a href="pages/notes.html" class="btn btn-primary">查看详情</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2023 我的个人博客. 保留所有权利.</p>
+    </div>
+  </footer>
+  
+  <!-- 引入JavaScript库 -->
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pell@1.0.6/dist/pell.min.js"></script>
+  
+  <!-- 引入自定义脚本 -->
+  <script src="js/state.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/nav.js"></script>
+  
+  <script>
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化导航
+      const navigation = new Navigation();
+      
+      // 为模块卡片添加点击事件
+      document.querySelectorAll('.module-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const module = this.dataset.module;
+          const link = this.querySelector('.btn').getAttribute('href');
+          
+          // 显示加载指示器
+          utils.showLoadingIndicator();
+          
+          // 模拟页面加载延迟
+          setTimeout(() => {
+            window.location.href = link;
+          }, 300);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

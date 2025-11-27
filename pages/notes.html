@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笔记 - 个人博客</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/notes.css">
+    <!-- 引入Pell富文本编辑器 -->
+    <link rel="stylesheet" href="https://unpkg.com/pell/dist/pell.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="site-header">
+        <!-- 导航栏将由nav.js动态创建 -->
+    </header>
+
+    <!-- 主内容区域 -->
+    <main class="main">
+        <div class="container">
+            <section class="page-header">
+                <h1 class="page-title">笔记</h1>
+                <p class="page-description">记录生活中的点点滴滴</p>
+            </section>
+
+            <!-- 操作区域 -->
+            <section class="actions">
+                <button id="add-note-btn" class="btn btn-primary">
+                    <i class="icon-plus"></i> 添加笔记
+                </button>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="搜索笔记标题或内容..." class="form-control">
+                </div>
+            </section>
+
+            <!-- 笔记列表 -->
+            <section class="notes-container" id="notes-container">
+                <!-- 笔记卡片将由JavaScript动态生成 -->
+            </section>
+
+            <!-- 空状态提示 -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <div class="empty-icon">
+                    <i class="icon-note"></i>
+                </div>
+                <h3>还没有添加任何笔记</h3>
+                <p>点击上方"添加笔记"按钮，开始记录你的生活</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 添加/编辑笔记模态框 -->
+    <div class="modal" id="note-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">添加笔记</h2>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="note-form">
+                    <input type="hidden" id="note-id">
+                    
+                    <div class="form-group">
+                        <label for="note-title">标题 *</label>
+                        <input type="text" id="note-title" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="note-date">日期 *</label>
+                        <input type="date" id="note-date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="note-content">内容 *</label>
+                        <div id="pell-editor"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="note-images">图片URL（多个URL用逗号分隔）</label>
+                        <input type="text" id="note-images" class="form-control" placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel-btn" class="btn btn-secondary">取消</button>
+                <button type="button" id="save-btn" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载指示器 -->
+    <div class="loading" id="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- 消息提示 -->
+    <div class="toast" id="toast" style="display: none;">
+        <div class="toast-message" id="toast-message"></div>
+    </div>
+
+    <!-- JavaScript文件 -->
+    <script src="../js/state.js"></script>
+    <!-- 引入Pell富文本编辑器 -->
+    <script src="https://unpkg.com/pell/dist/pell.min.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/notes.js"></script>
+    <!-- 导航初始化已移至notes.js中 -->
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读书笔记 - 个人博客</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/books.css">
+    <!-- 引入Pell富文本编辑器 -->
+    <link rel="stylesheet" href="https://unpkg.com/pell/dist/pell.min.css">
+</head>
+<body>
+    <!-- 导航栏将由nav.js动态创建 -->
+    <header class="site-header">
+    </header>
+
+    <!-- 主内容区域 -->
+    <main class="main">
+        <div class="container">
+            <section class="page-header">
+                <h1 class="page-title">读书笔记</h1>
+                <p class="page-description">记录阅读的书籍和感想</p>
+            </section>
+
+            <!-- 操作区域 -->
+            <section class="actions">
+                <button id="add-book-btn" class="btn btn-primary">
+                    <i class="icon-plus"></i> 添加书籍
+                </button>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="搜索书名或作者..." class="form-control">
+                </div>
+            </section>
+
+            <!-- 书籍列表 -->
+            <section class="books-container" id="books-container">
+                <!-- 书籍卡片将由JavaScript动态生成 -->
+            </section>
+
+            <!-- 空状态提示 -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <div class="empty-icon">
+                    <i class="icon-book"></i>
+                </div>
+                <h3>还没有添加任何书籍</h3>
+                <p>点击上方"添加书籍"按钮，开始记录你的阅读之旅</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 添加/编辑书籍模态框 -->
+    <div class="modal" id="book-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">添加书籍</h2>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="book-form">
+                    <input type="hidden" id="book-id">
+                    
+                    <div class="form-group">
+                        <label for="book-title">书名 *</label>
+                        <input type="text" id="book-title" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-author">作者 *</label>
+                        <input type="text" id="book-author" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-date">阅读日期 *</label>
+                        <input type="date" id="book-date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-notes">读书感想</label>
+                        <div id="pell-editor"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel-btn" class="btn btn-secondary">取消</button>
+                <button type="button" id="save-btn" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载指示器 -->
+    <div class="loading" id="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- 消息提示 -->
+    <div class="toast" id="toast" style="display: none;">
+        <div class="toast-message" id="toast-message"></div>
+    </div>
+
+    <!-- JavaScript文件 -->
+    <script src="../js/state.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/nav.js"></script>
+    <!-- 引入Pell富文本编辑器 -->
+    <script src="https://unpkg.com/pell/dist/pell.min.js"></script>
+    <script src="../js/books.js"></script>
+    <script>
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航初始化已移至books.js中
+            
+            // 初始化读书模块
+            const bookManager = new BookManager();
+        });
+    </script>
+</body>
+</html>
