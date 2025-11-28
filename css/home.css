@@ -46,11 +46,11 @@ body {
   justify-content: center;
 }
 
-/* 添加彩虹色渐变标题样式 */
+/* 添加明亮色渐变标题样式 */
 .self-introduction h2 {
   font-size: 6rem; /* 从4.84rem修改为6rem */
   margin-bottom: 20px;
-  background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  background: linear-gradient(30deg, #ff0000, #ff4500, #ff7f00, #ffa500, #ffff00, #ffed4e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
